@@ -26,7 +26,7 @@ JentisSDK is a robust iOS SDK designed to facilitate app tracking to Jentis. Thi
 Add `JentisSDK` as a dependency in your `Package.swift` file:
 ```swift
 dependencies: [
-    .package(url: "https://github.com/your-repo/JentisSDK.git", from: "1.0.0")
+    .package(url: "[https://github.com/your-repo/JentisSDK](https://github.com/JENTISDev/jentis-sdk-ios-early-adopter.git)", from: "1.0.0")
 ]
 ```
 
