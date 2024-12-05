@@ -14,6 +14,7 @@ JentisSDK is a robust iOS SDK designed to facilitate app tracking to Jentis. Thi
    - [Tracking Custom Events](#tracking-custom-events)
    - [Submitting Data](#submitting-data)
    - [Adding Enrichments](#adding-enrichments)
+   - [Adding Custom Enrichments](#adding-custom-enrichments)
    - [Add to Cart](#add-to-cart)
 4. [TrackConfig Details](#trackconfig-details)
 5. [License](#license)
@@ -90,7 +91,7 @@ try await TrackingService.shared.submit()
 ```
 
 ### Adding Enrichments
-Add custom enrichments to tracking payloads:
+Add enrichments to tracking payloads:
 ```swift
 TrackingService.shared.addEnrichment(
     pluginId: "userSession",
@@ -99,6 +100,21 @@ TrackingService.shared.addEnrichment(
         "isPremiumUser": true
     ],
     variables: ["sessionId", "userType"]
+)
+```
+
+### Adding Custom Enrichments
+Add custom enrichments to tracking payloads:
+```swift
+TrackingService.shared.addCustomEnrichment(
+   pluginId: "enrichment_xxxlprodfeed",
+   arguments: [
+       "account": "JENTIS TEST ACCOUNT",
+       "page_title": "MY PAGE TITLE",
+       "productId": ["123", "ABC", "3"],
+       "baseProductId": ["1"]
+   ],
+   variables: ["enrichment_product_variant"]
 )
 ```
 
