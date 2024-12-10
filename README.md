@@ -16,6 +16,7 @@ JentisSDK is a robust iOS SDK designed to facilitate app tracking to Jentis. Thi
    - [Adding Enrichments](#adding-enrichments)
    - [Adding Custom Enrichments](#adding-custom-enrichments)
    - [Add to Cart](#add-to-cart)
+   - [Configuring Log Level](#configuring-log-level)
 4. [TrackConfig Details](#trackconfig-details)
 5. [License](#license)
 
@@ -27,7 +28,7 @@ JentisSDK is a robust iOS SDK designed to facilitate app tracking to Jentis. Thi
 Add `JentisSDK` as a dependency in your `Package.swift` file:
 ```swift
 dependencies: [
-    .package(url: "[https://github.com/your-repo/JentisSDK](https://github.com/JENTISDev/jentis-sdk-ios-early-adopter.git)", from: "1.0.0")
+    .package(url: "https://github.com/JENTISDev/jentis-sdk-ios-early-adopter.git", from: "1.0.0")
 ]
 ```
 
@@ -127,6 +128,20 @@ try await TrackingService.shared.addToCart([
     "price": "49.99"
 ])
 ```
+
+### Configuring Log Level
+Configure the log level for the SDK to control the verbosity of logs:
+```swift
+JentisService.setLogLevel(.debug)
+```
+
+Available log levels:
+- `.debug`: Detailed information for debugging.
+- `.info`: Informational messages.
+- `.warning`: Warnings about potential issues.
+- `.error`: Errors that occurred during execution.
+- `.critical`: Critical errors.
+- `.none`: Disables all logging.
 
 ---
 
