@@ -18,6 +18,7 @@ JentisSDK is a robust iOS SDK designed to facilitate app tracking to Jentis. Thi
    - [Add to Cart](#add-to-cart)
    - [Configuring Log Level](#configuring-log-level)
 4. [TrackConfig Details](#trackconfig-details)
+4. [Offline Mode](#offline-mode)
 5. [License](#license)
 
 ---
@@ -159,6 +160,41 @@ The `TrackConfig` class manages the configuration of the SDK. Below are its prop
 | `customProtocol`      | `String?`       | Custom protocol (e.g., `http`)      | `"https"`   |
 
 ---
+
+### Offline Mode
+
+The SDK supports offline tracking, allowing events to be cached locally and sent to the server once network connectivity is restored.
+
+#### Configuration
+
+To enable offline tracking, use the `enableOfflineTracking` property in the `TrackConfig`. Additionally, you can specify the maximum duration (in seconds) for which events should remain cached using the `offlineTrackingTimeout` property.
+
+#### Example
+
+```swift
+let config = TrackConfig(
+    trackDomain: "tracking.yourdomain.com",
+    container: "your-container",
+    environment: .live,
+    enableOfflineTracking: true, // Enable offline tracking
+    offlineTrackingTimeout: 7200 // Set timeout to 2 hours (in seconds)
+)
+JentisService.configure(with: config)
+```
+
+#### Properties
+
+- `enableOfflineTracking`: Set this to `true` to enable offline event caching. When enabled, events will be stored locally if the network is unavailable.
+- `offlineTrackingTimeout`: Specify the maximum time (in seconds) for events to remain in the local cache. Events older than this duration will be discarded.
+
+#### Behavior
+
+1. Events are stored locally if there is no network connection.
+2. Stored events are automatically sent to the server when the network is restored.
+3. Cached events exceeding the specified timeout will be discarded.
+
+This configuration helps maintain reliable tracking even in scenarios with intermittent connectivity.
+
 
 ## License
 This SDK is licensed under the MIT License.
