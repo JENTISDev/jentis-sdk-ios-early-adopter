@@ -169,9 +169,6 @@ extension JentisSDK.TrackingService {
   public func addCustomEnrichment(pluginId: Swift.String? = nil, arguments: [Swift.String : JentisSDK.CodableValue], variables: [Swift.String])
   public func addToCart(_ customProperties: [Swift.String : Any]) async throws
 }
-extension JentisSDK.TrackingService {
-  public func resetEnrichments()
-}
 @_hasMissingDesignatedInitializers public class TimestampUtility {
   public static func currentTimestampInMillis() -> Swift.Int
   @objc deinit
